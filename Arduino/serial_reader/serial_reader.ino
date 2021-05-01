@@ -1,0 +1,27 @@
+#include <Adafruit_BMP280.h>
+
+Adafruit_BMP280 bmp; // I2C Interface
+int potPin = 2;    // select the input pin for the potentiometer
+
+void setup() {
+  Serial.begin(9600);
+  bmp.begin();
+
+  /* Default settings from datasheet. */
+  bmp.setSampling(Adafruit_BMP280::MODE_NORMAL,     /* Operating Mode. */
+                  Adafruit_BMP280::SAMPLING_X2,     /* Temp. oversampling */
+                  Adafruit_BMP280::SAMPLING_X16,    /* Pressure oversampling */
+                  Adafruit_BMP280::FILTER_X16,      /* Filtering. */
+                  Adafruit_BMP280::STANDBY_MS_500); /* Standby time. */
+}
+
+void loop() {
+    Serial.print(bmp.readTemperature());
+    Serial.print(",");
+    Serial.print(analogRead(potPin)/10);
+    Serial.print(",");
+    Serial.print(bmp.readPressure()/100);
+    Serial.print(",");
+    Serial.print(bmp.readAltitude(1028.4));
+    Serial.print(",");
+}
