@@ -16,12 +16,14 @@ void setup() {
 }
 
 void loop() {
-    Serial.print(bmp.readTemperature());
+    Serial.print("region-04,");
+    Serial.print("node-01,");
+    Serial.print(0);
     Serial.print(",");
-    Serial.print(analogRead(potPin)/10);
+    Serial.print(0);
     Serial.print(",");
-    Serial.print(bmp.readPressure()/100);
+    Serial.print(0);
     Serial.print(",");
-    Serial.print(bmp.readAltitude(1028.4));
-    Serial.print(",");
+    Serial.println(0);
+    delay(1000);
 }
