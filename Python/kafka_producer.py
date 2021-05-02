@@ -2,7 +2,7 @@ import serial
 import struct
 import time
 # from confluent_kafka import Producer
-ser=serial.Serial('/dev/ttyACM0',9600)
+ser=serial.Serial('COM4',9600)
 
 region = 4
 
