@@ -25,5 +25,5 @@ while True:
                     \tv1: {transmission[1]}\n\
                     \tv2: {transmission[2]}\n\
                     \tv3: {transmission[3]}\n")
-            p.produce('region-04',)
-            p.flush()
+            #p.produce('region-04',)
+            #p.flush()
