@@ -15,7 +15,7 @@ p = Producer({
     })
 
 while True:
-    while ser.read(1) != 0xaa:
+    if ser.read(1) == 0xaa:
         rawData = ser.read(transmissionSize)
 
         if ser.read(1) == 0xee:
