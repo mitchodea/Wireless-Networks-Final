@@ -5,9 +5,13 @@ struct Transmission {
         uint8_t _start_byte{0xaa};
         int8_t node_id{1};
     public:
-        int8_t v1 = 0;
-        int16_t v2 = 0;
+        float v1 = 0.0;
+        float v2 = 0.0;
         float v3 = 0.0;
+        float v4 = 0.0;
+        float v5 = 0.0;
+        bool v6 = false;
+
     private:
         uint8_t _end_byte{0xee};
 };
@@ -38,7 +42,10 @@ void setup() {
 }
 
 void loop() {
-    transmission.t.v1 = ++test_counter;
+    //===============
+    //DATA
+    //
+    transmission.t.v1 = (float)++test_counter;
     test_float *= 1.01;
     transmission.t.v3 = test_float;
     
