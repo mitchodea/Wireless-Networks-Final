@@ -1,0 +1,6 @@
+Channel Mask: faf6238b095f22d2b2
+Preamble ID: 1
+Network ID: FAF
+DH: EC07052B
+DL: 45AAF7E1
+Use AG Command to autoset DH/DL

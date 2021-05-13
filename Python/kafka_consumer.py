@@ -2,18 +2,18 @@ from influxdb_client import InfluxDBClient
 from influxdb_client.client.write_api import SYNCHRONOUS
 from confluent_kafka import Consumer, KafkaError
 
-token = "aplJXu9cQ6Iw7iucxKyv6DjXDtEzipc-Vrv8XfpmmAn7BVJyaA2yVMjVmrfcyT46-w3sZzMeZa8EXa9RmIQcIg=="
+token = "#"
 org = "myorg"
 bucket = "Kafka-Consumer"
-client = InfluxDBClient(url="http://3.25.197.187:8086", token=token)
+client = InfluxDBClient(url="#", token=token)
 c = Consumer({
-    'bootstrap.servers': '52.88.27.139:9092,54.188.70.115:9092,54.148.71.7:9092',
+    'bootstrap.servers': '#',
     'security.protocol': 'sasl_plaintext',
     'auto.offset.reset': 'beginning',
     'group.id': 'my-group',
     'sasl.mechanism': 'SCRAM-SHA-256',
-    'sasl.username': 'ickafka',
-    'sasl.password': '8dd926d510112b73d4bf2ad8a45c150873d01869eee76e0782fc0d2f65b85763'
+    'sasl.username': '#',
+    'sasl.password': '#'
 })
 c.subscribe(['region-04'])
 

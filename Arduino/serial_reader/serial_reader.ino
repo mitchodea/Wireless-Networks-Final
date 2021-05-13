@@ -1,4 +1,11 @@
 #include <Adafruit_BMP280.h>
+#include <SoftwareSerial.h>
+#include <XBee.h>
+#include "DHT.h"
+#define DHTPIN 0
+#define DHTTYPE DHT11
+DHT dht(DHTPIN, DHTTYPE); 
+SoftwareSerial XBee(1,0); // RX, TX 
 
 struct Transmission {
     private:
@@ -25,8 +32,9 @@ Adafruit_BMP280 bmp;
 u_t transmission{Transmission()};
 
 void setup() {
-    Serial.begin(9600);
+    Xbee.begin(9600);
     bmp.begin();
+    dht.begin();
     bmp.setSampling(Adafruit_BMP280::MODE_NORMAL,     /* Operating Mode. */
                   Adafruit_BMP280::SAMPLING_X2,     /* Temp. oversampling */
                   Adafruit_BMP280::SAMPLING_X16,    /* Pressure oversampling */
@@ -35,11 +43,11 @@ void setup() {
 }
 
 void loop() {
-    transmission.t.humidity = (analogRead(2))/10;
+    transmission.t.humidity = dht.readHumidity();
     transmission.t.temp = (bmp.readTemperature());
     transmission.t.pressure = (bmp.readPressure()/1000);
     transmission.t.altitude = (bmp.readAltitude(1019.66));
     transmission.t.smoke = (analogRead(A0));
-    transmission.t.smoke = (analogRead(A1));
-    Serial.write(+transmission.b, sizeof(Transmission));
+    transmission.t.flame = (
+    Xbee.write(+transmission.b, sizeof(Transmission));
 }
